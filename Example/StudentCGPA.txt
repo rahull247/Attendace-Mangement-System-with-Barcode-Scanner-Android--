@@ -1,0 +1,24 @@
+StudentCGPA
+
+//RecyclerView rvStudents;
+/*String[] titles={"Roll NO-36","Roll No-1"};
+String[] desc1={"Name-Rahul Lokhande","Name-Vaibhav Lokhande"};
+    String[] desc2={"Gender-Male","Gender-Male"};
+    String[] desc3={"Course-First Yea.Bsc(Computer Science)","Course-First Yea.Bsc(Computer Science)"};
+    String[] desc4={"College Id NO-17521611","College Id No-17520733"};
+    String[] desc5={"Mobile NO-8975815956","Mobile No-9011059659"};*/
+//rc List<StudentMddel> mddelList;
+
+
+
+
+/*rc rvStudents=(RecyclerView) findViewById(R.id.rvStudent);
+                rvStudents.setLayoutManager(new LinearLayoutManager(StudentCGPA.this,LinearLayoutManager.VERTICAL,false));
+                mddelList =new ArrayList<>();
+
+                StudentCustomAdapter adapter=new StudentCustomAdapter(mddelList);
+                mddelList=mydb.getAllStudentData();
+                rvStudents.setAdapter(adapter);*/
+            // lv=(ListView)findViewById(R.id.listviewid);
+            // MyAdapter adapter=new MyAdapter(getApplication(),titles,desc1,desc2,desc3,desc4,desc5);
+            // lv.setAdapter(adapter);

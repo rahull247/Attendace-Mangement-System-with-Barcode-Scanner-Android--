@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterStudent"
+    android:background="@drawable/background"
+    android:weightSum="10"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/Title"
+            android:text="Enter Student Details"
+            android:layout_centerInParent="true"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="#2E86C1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+                <!--Registration No-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/RegisterForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+
+                        android:hint="Registration Form No"
+                        android:textAlignment="center"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
+                <!--Roll NO-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/RollNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+
+                        android:hint="Roll No"
+                        android:textAlignment="center"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
+                 <!--Full Name-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/FullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+
+                        android:hint="Full Name"
+                        android:textAlignment="center"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
+                <!--Radio Button-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="Gender:"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radiogrp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/Male"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="19dp"
+                            android:layout_height="wrap_content"
+                            android:text="Male"
+                            android:fontFamily="sans-serif-smallcaps"/>
+
+                        <RadioButton
+                            android:id="@+id/Female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="19dp"
+                            android:layout_weight="1"
+                            android:text="Female"
+                            android:fontFamily="sans-serif-smallcaps"/>
+
+                    </RadioGroup>
+                </LinearLayout>
+                <!--Spinner-->
+                <Spinner
+                    android:id="@+id/Course"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+                <!--College Id NO-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/COLLEGEID"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+
+                        android:hint="College Id No"
+                        android:textAlignment="center"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
+                <!--Mobile No-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/MobNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+
+                        android:hint="Mobile No"
+                        android:textAlignment="center"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </android.support.design.widget.TextInputLayout>
+                <!--Import Excel-->
+
+                <!--Submit-->
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/Submit"
+                    android:text="Submit"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:background="@drawable/submitbtn"
+                    android:onClick="SubmitBtn"/>
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

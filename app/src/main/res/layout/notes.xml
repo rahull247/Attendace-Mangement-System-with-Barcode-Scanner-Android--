@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notes"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="center_horizontal"
+         android:layout_marginLeft="100dp"
+         android:text="Notes Reminder"
+         android:textSize="20dp"
+         android:textStyle="bold"
+         android:textColor="#2E86C1"
+         android:fontFamily="sans-serif-smallcaps"
+         android:layout_marginTop="50dp"/>
+
+     <EditText
+         android:id="@+id/noteTitle"
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         android:layout_marginTop="110dp"
+         android:gravity="center"
+         android:hint="Title Here" />
+
+     <EditText
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:padding="15dp"
+         android:layout_below="@id/noteTitle"
+         android:gravity="top|left"
+         android:hint="Body here"
+         android:layout_marginBottom="50dp"
+         android:id="@+id/noteBody" />
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Save"
+         android:textColor="#ffffff"
+         android:background="@color/colorPrimaryDark"
+         android:textSize="16sp"
+         android:textStyle="bold"
+         android:id="@+id/noteSaveButton"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentEnd="true"
+         android:onClick="SubmitBtn"/>
+
+</RelativeLayout>

@@ -1,0 +1,104 @@
+package com.example.rahul.attendance;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.rahul.attendance.adapter.StudentCustomAdapter;
+import com.example.rahul.attendance.model.StudentMddel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentCGPA extends AppCompatActivity {
+Spinner spinner;
+//RecyclerView rvStudents;
+Button seachbtn;
+DatabaseHelper mydb;
+String[] titles={"Title1","Title2"};
+String[] desc1={"description 1-1","description 1-2"};
+    String[] desc2={"description 2-1","description 2-2"};
+    ListView lv;
+    //rc List<StudentMddel> mddelList;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.student_cgp);
+
+        mydb=new DatabaseHelper(this);
+        spinner = findViewById(R.id.spinner2);
+        List<String> Categories = new ArrayList<>();
+        Categories.add(0, "Select Class");
+        Categories.add("First Year BSC(Computer Science)");
+        Categories.add("Second Year BSC(Computer Science)");
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Categories);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spinner.setAdapter(aa);
+
+
+         seachbtn=(Button)findViewById(R.id.Submit);
+        seachbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               /*rc rvStudents=(RecyclerView) findViewById(R.id.rvStudent);
+                rvStudents.setLayoutManager(new LinearLayoutManager(StudentCGPA.this,LinearLayoutManager.VERTICAL,false));
+                mddelList =new ArrayList<>();
+
+                StudentCustomAdapter adapter=new StudentCustomAdapter(mddelList);
+                mddelList=mydb.getAllStudentData();
+                rvStudents.setAdapter(adapter);*/
+             lv=(ListView)findViewById(R.id.listviewid);
+             MyAdapter adapter=new MyAdapter(getApplication(),titles,desc1,desc2);
+             lv.setAdapter(adapter);
+            }
+        });
+
+        }
+        class MyAdapter extends ArrayAdapter{
+            String[] titlearray;
+            String[] decs1array;
+            String[] decs2array;
+            public MyAdapter(Context context, String[] title1,String[] desc1,String[] desc2) {
+                super(context,R.layout.custom_student_layout,R.id.tvrollno,title1 );
+                this.titlearray=title1;
+                this.decs1array=desc1;
+                this.decs2array=desc2;
+            }
+
+
+        public View getView(int position, View convertView, ViewGroup parent){
+
+            LayoutInflater inflater=(LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row=inflater.inflate(R.layout.custom_student_layout,parent,false);
+
+            TextView myTitle=(TextView)row.findViewById(R.id.tvrollno);
+            TextView myDesc1=(TextView)row.findViewById(R.id.tvname);
+            TextView myDesc2=(TextView)row.findViewById(R.id.tvgender);
+
+            myTitle.setText(titlearray[position]);
+            myDesc1.setText(decs1array[position]);
+            myDesc2.setText(decs2array[position]);
+            return row;
+        }
+
+    }
+}

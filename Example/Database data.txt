@@ -1,0 +1,88 @@
+ package com.example.rahul.attendance;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Attendance extends AppCompatActivity {
+    private Spinner spinner;
+    Button scanbtn;
+    TextView showcode;
+    DatabaseHelper mydb;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.attendance);
+        spinner = findViewById(R.id.spinner1);
+
+        List<String> Categories = new ArrayList<>();
+        Categories.add(0, "Select Class");
+        Categories.add("First Year.BSC(Computer Science)");
+        Categories.add("Second Year.BSC(Computer Science)");
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Categories);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spinner.setAdapter(aa);
+        showcode = (TextView) findViewById(R.id.textView3);
+        scanbtn = (Button) findViewById(R.id.button);
+        mydb = new DatabaseHelper(this);
+
+        scanbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator scanIntegrator = new IntentIntegrator(Attendance.this);
+                scanIntegrator.initiateScan();
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent in) {
+
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, in);
+
+
+        if (scanningResult != null) {
+
+            String contents = in.getStringExtra("SCAN_RESULT");
+            String format = in.getStringExtra("SCAN_RESULT_FORMAT");
+
+
+            Cursor res = mydb.getAllData(contents);
+            res.moveToFirst();
+            //fetch all data one by one
+            do {
+
+                String Rollno = res.getString(res.getColumnIndex("Roll_No"));
+                String Name = res.getString(res.getColumnIndex("Full_Name"));
+                String Gender = res.getString(res.getColumnIndex("Gender"));
+                String Course = res.getString(res.getColumnIndex("Class"));
+                String ColegeID = res.getString(res.getColumnIndex("College_Id_No"));
+                String MobNO = res.getString(res.getColumnIndex("Mobile_No"));
+                showcode.setText("Roll NO:" + Rollno + "\n" + "Name:" + Name + "\n" + "Gender:" + Gender + "\n" + "Course:" + Course + "\n" + "College Id:" + ColegeID + "\n" + "Mobile No:" + MobNO + "\n");
+                //move next position until end of the data
+            } while (res.moveToNext());
+
+
+            //  showcode.setText("Content:"+contents+"\n"+"Format:"+format+"\n");
+        } else {
+            showcode.setText("Error could not found data");
+        }
+
+    }
+}
